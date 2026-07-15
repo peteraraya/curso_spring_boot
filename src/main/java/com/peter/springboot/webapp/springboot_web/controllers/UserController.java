@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
     
-    @GetMapping("/")
+    @GetMapping("/details")
 
     public String details(Model model) {
       model.addAttribute("title", "hola como estas");
