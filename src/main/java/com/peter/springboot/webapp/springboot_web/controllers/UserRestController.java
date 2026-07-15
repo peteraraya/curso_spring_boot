@@ -9,17 +9,32 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Controlador REST que maneja las peticiones relacionadas con los usuarios.
+ * Devuelve respuestas en formato JSON en lugar de vistas HTML.
+ */
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
     
+    /**
+     * Endpoint que retorna los detalles de un usuario en formato JSON.
+     * Mapea a la ruta /api/details utilizando el método HTTP GET.
+     * 
+     * @param model Objeto Model provisto por Spring (opcional en este contexto REST).
+     * @return Map con la estructura de datos que será convertida a JSON.
+     */
     @RequestMapping(path="/details", method = RequestMethod.GET)
-
     public Map<String, Object> details(Model model) {
+      // Se utiliza un HashMap para estructurar la respuesta JSON
       Map<String, Object> body = new HashMap<>();
+      
+      // Agregando atributos al cuerpo de la respuesta
       body.put("title", "hola como estas");
       body.put("name", "Pedro");
       body.put("lastName", "Araya");
-      return  body;
+      
+      // Retorna el mapa, que Spring convertirá automáticamente a formato JSON
+      return body;
     }
 }
