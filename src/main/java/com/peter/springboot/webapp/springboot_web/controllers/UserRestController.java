@@ -2,8 +2,8 @@ package com.peter.springboot.webapp.springboot_web.controllers;
 
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.Map;
 @RequestMapping("/api")
 public class UserRestController {
     
-    @GetMapping("/details")
+    @RequestMapping(path="/details", method = RequestMethod.GET)
 
     public Map<String, Object> details(Model model) {
       Map<String, Object> body = new HashMap<>();
