@@ -6,10 +6,12 @@
   <title th:text="${title}">Document</title>
 </head>
 <body>
+  <!-- Mostrar el título pasado desde el controlador usando Thymeleaf -->
   <h1 th:text="${title}"></h1>
   <ul>
-    <li th:text="${name}"></li>
-    <li th:text="${lastName}"></li>
+    <!-- Mostrar los datos del objeto user usando la sintaxis de Spring EL -->
+    <li th:text="${user.name}"></li>
+    <li th:text="${user.lastName}"></li>
   </ul>
 </body>
 </html>

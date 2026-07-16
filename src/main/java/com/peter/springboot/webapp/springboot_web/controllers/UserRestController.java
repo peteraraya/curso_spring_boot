@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.peter.springboot.webapp.springboot_web.models.User;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,11 +30,11 @@ public class UserRestController {
     public Map<String, Object> details(Model model) {
       // Se utiliza un HashMap para estructurar la respuesta JSON
       Map<String, Object> body = new HashMap<>();
+      User user = new User("Pedro", "Araya");
       
       // Agregando atributos al cuerpo de la respuesta
       body.put("title", "hola como estas");
-      body.put("name", "Pedro");
-      body.put("lastName", "Araya");
+      body.put("user",user);
       
       // Retorna el mapa, que Spring convertirá automáticamente a formato JSON
       return body;
