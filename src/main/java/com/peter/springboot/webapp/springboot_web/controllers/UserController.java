@@ -1,8 +1,14 @@
 package com.peter.springboot.webapp.springboot_web.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.peter.springboot.webapp.springboot_web.models.User;
 
@@ -32,4 +38,34 @@ public class UserController {
       // Retorna el nombre de la plantilla HTML ubicada en src/main/resources/templates/details.html
       return "details";
     }
+
+  /**
+   * Endpoint que renderiza la vista de listado de usuarios.
+   * Mapea a la ruta /list.
+   * Utiliza ModelMap, que es una alternativa a Model para pasar datos a la vista.
+   */
+  @GetMapping("/list")
+  public String list(ModelMap model){
+    model.addAttribute("title", "Listado de usuarios!!");
+    return "list";
+  }
+
+  /**
+   * El uso de @ModelAttribute a nivel de método permite que el valor retornado 
+   * se añada automáticamente al modelo de todas las vistas (métodos) de este controlador.
+   * En este caso, todas las vistas tendrán acceso a la variable "users" que contiene esta lista.
+   * Es útil para datos comunes que se repiten en múltiples vistas (ej. menús, listas de países, etc).
+   * 
+   * @return Lista de usuarios.
+   */
+  @ModelAttribute("users")
+  public List<User> usersModel(){
+    return Arrays.asList(
+        new User("Pedro", "Araya", "piteraraya@antiticblue.com"),
+        new User("John", "Parra", "jparra@antiticblue.com"),
+        new User("Benja", "Diaz"),
+        new User("JP", "Leon"));
+  }
+
+
 }

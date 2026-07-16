@@ -12,6 +12,18 @@
     <!-- Mostrar los datos del objeto user usando la sintaxis de Spring EL -->
     <li th:text="${user.name}"></li>
     <li th:text="${user.lastName}"></li>
+    
+    <!-- 
+      th:if evalúa una condición booleana. Si es verdadera, el elemento se renderiza en el HTML.
+      Aquí verifica si el email existe (no es nulo ni vacío).
+    -->
+    <li th:if="${user.email}" th:text="${user.email}"></li>
+    
+    <!-- 
+      Se pueden usar expresiones lógicas como 'not' e igualdades/desigualdades '!= null'.
+      Esto es un if-else simulado, mostrándose solo si el email es nulo.
+    -->
+    <li th:if="${not (user.email != null) }" th:text="${'no tiene email'}"></li>
   </ul>
 </body>
 </html>

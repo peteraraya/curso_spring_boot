@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Document</title>
+  </head>
+  <body>
+  <h1 th:text="${title}"></h1>
+  
+  <!-- 
+    Verificamos si la lista 'users' está vacía invocando el método .isEmpty() de Java.
+    Si está vacía, se muestra este div.
+  -->
+  <div th:if="${users.isEmpty()}" th:text="${'No tiene elementos usuarios!!'}"></div>
+
+  <!-- 
+    Si la lista NO está vacía (usando el operador lógico 'not'), se muestra la tabla completa.
+  -->
+  <table th:if="${not users.isEmpty()}">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>apellido</th>
+        <th>email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 
+        th:each funciona como un bucle for-each en Java.
+        Itera sobre la lista 'users' (obtenida del @ModelAttribute del controlador)
+        asignando cada elemento a la variable temporal 'user' por cada fila <tr>.
+      -->
+      <tr th:each="user: ${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.email}"></td>
+        
+        <!-- Muestra un 'n/a' de forma adicional si el email del usuario es nulo -->
+        <td th:if="${user.email==null}" th:text="${'n/a'}"></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</body>
+</html>
